@@ -1,0 +1,41 @@
+# selenium_test.yml
+test_name: "OrangeHRM Login Test"
+browser: "Chrome"
+webdriver:
+  path: "C:\\Users\\namratab\\Documents\\chromedriver-win64\\chromedriver.exe"
+  options:
+    headless: false
+    incognito: false
+
+test_steps:
+  - step: "Open the website"
+    url: "https://opensource-demo.orangehrmlive.com/"
+
+  - step: "Wait for the username field to be present"
+    action: "wait_for_element"
+    element:
+      type: "name"
+      value: "username"
+    input: "Admin"
+
+  - step: "Enter password"
+    action: "input_text"
+    element:
+      type: "name"
+      value: "password"
+    input: "admin123"
+
+  - step: "Click the login button"
+    action: "click_element"
+    element:
+      type: "xpath"
+      value: "//*[@id='app']/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button"
+
+  - step: "Wait for the page to load and verify the title"
+    action: "verify_title"
+    expected_title: "OrangeHRM"
+
+  - step: "Close the browser"
+    action: "close_browser"
+
+expected_result: "Login Test Passed"
